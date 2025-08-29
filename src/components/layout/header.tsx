@@ -11,7 +11,7 @@ const links = [
         href: "/",
     },
     {
-        title: "Galaxy",
+        title: "Universe",
         href: "/galaxy",
     },
     {

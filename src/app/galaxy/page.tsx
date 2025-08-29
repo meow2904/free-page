@@ -1,8 +1,8 @@
-import Galaxy from "@/components/pages/galaxy";
+import Universe from "@/components/pages/universe";
 
 const GalaxyPage = () => {
     return (
-        <Galaxy></Galaxy>
+        <Universe></Universe>
     )
 }
 export default GalaxyPage;
