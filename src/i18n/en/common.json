@@ -1,3 +1,5 @@
 {
-  "welcome": "Welcome to channel!"
+  "welcome": "Welcome to channel!",
+  "fullname": "Fullname is required!",
+  "password": "Password is required!"
 }

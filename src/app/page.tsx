@@ -12,6 +12,7 @@ export default function Home() {
         // </button>
 
         <div className=" text-center h-screen flex items-center justify-center flex-col">
+            <p className="text-sm p-5">{t('welcome')}</p>
             <p className="text-sm">This is a glass effect like Apple's UI</p>
 
             <TestPage></TestPage>
