@@ -7,6 +7,7 @@ interface ButtonProps {
     type?: any;
     children?: React.ReactNode;
     tabIndex?: number;
+    onClick?: () => void;
 }
 
 const Button: React.FC<ButtonProps> = (
@@ -15,7 +16,8 @@ const Button: React.FC<ButtonProps> = (
         children,
         disabled,
         type,
-        tabIndex
+        tabIndex,
+        onClick,
     }
 ) => {
     return (
@@ -25,6 +27,7 @@ const Button: React.FC<ButtonProps> = (
                 disabled={disabled}
                 type={type}
                 tabIndex={tabIndex}
+                onClick={onClick}
             >
                 {children}
             </button>

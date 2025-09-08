@@ -6,6 +6,7 @@ import Button from "@/components/forms/Button";
 import Select from "@/components/forms/Select";
 import {useState} from "react";
 import {useTranslations} from "next-intl";
+import {FilePreview, Preview} from "@/components/ui/preview";
 
 interface FormInputProps {
     input1: string;
@@ -25,6 +26,18 @@ const tempSelect = [
 ]
 
 const TestPage: React.FC = () => {
+    const [selectedFile, setSelectedFile] = useState<File>()
+    const handleFileSelect = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const file = event.target.files?.[0]
+        if ( file && (file.type === "application/pdf"
+            || file.type === "application/vnd.openxmlformats-officedocument.wordprocessingml.document")
+        ) {
+            setSelectedFile(file)
+        } else {
+            alert("Please select a PDF or DOCX file")
+        }
+    }
+
     const t = useTranslations();
     const [formData, setFormData] = useState<FormInputProps>({
         input1: "",
@@ -59,48 +72,53 @@ const TestPage: React.FC = () => {
 
     return (
         <div className="w-2/3 border rounded-lg p-2 ">
-            <Form onSubmit={handleSubmit}>
-                <Input
-                    id={"input1"}
-                    name="Test Input"
-                    required={false}
-                    type="text"
-                    placeholder={"Test Input"}
-                    title={"Test Input"}
-                    tabIndex={1}
-                    error={errors.input1}
-                    value={formData.input1}
-                    onChange={handleChange}
-                ></Input>
-                <Input
-                    id={"input2"}
-                    name="Test Textarea"
-                    required={false}
-                    type="textarea"
-                    placeholder={"Test textarea"}
-                    title={"textarea"}
-                    tabIndex={2}
-                    error={errors.input2}
-                    value={formData.input2}
-                    onChange={handleChange}
+            {/*<Form onSubmit={handleSubmit}>*/}
+            {/*    <Input*/}
+            {/*        id={"input1"}*/}
+            {/*        name="Test Input"*/}
+            {/*        required={false}*/}
+            {/*        type="text"*/}
+            {/*        placeholder={"Test Input"}*/}
+            {/*        title={"Test Input"}*/}
+            {/*        tabIndex={1}*/}
+            {/*        error={errors.input1}*/}
+            {/*        value={formData.input1}*/}
+            {/*        onChange={handleChange}*/}
+            {/*    ></Input>*/}
+            {/*    <Input*/}
+            {/*        id={"input2"}*/}
+            {/*        name="Test Textarea"*/}
+            {/*        required={false}*/}
+            {/*        type="textarea"*/}
+            {/*        placeholder={"Test textarea"}*/}
+            {/*        title={"textarea"}*/}
+            {/*        tabIndex={2}*/}
+            {/*        error={errors.input2}*/}
+            {/*        value={formData.input2}*/}
+            {/*        onChange={handleChange}*/}
 
-                ></Input>
-                <Select
-                    options={tempSelect}
-                    onChange={handleChange}
-                    tabIndex={3}
-                    id={"selectBox"}
-                    error={errors.selectValue}
-                >
+            {/*    ></Input>*/}
+            {/*    <Select*/}
+            {/*        options={tempSelect}*/}
+            {/*        onChange={handleChange}*/}
+            {/*        tabIndex={3}*/}
+            {/*        id={"selectBox"}*/}
+            {/*        error={errors.selectValue}*/}
+            {/*    >*/}
 
-                </Select>
-                <Button
-                    type="submit"
-                    className={"bg-green-400 p-1 text-black"}
-                    tabIndex={3}
-                >
-                    Submit
-                </Button>
+            {/*    </Select>*/}
+            {/*    <Button*/}
+            {/*        type="submit"*/}
+            {/*        className={"bg-green-400 p-1 text-black"}*/}
+            {/*        tabIndex={3}*/}
+            {/*    >*/}
+            {/*        Submit*/}
+            {/*    </Button>*/}
+            {/*</Form>*/}
+
+            <Form >
+                <input type="file" accept=".pdf,.docx" onChange={handleFileSelect} className="" id="file-input" />
+                <Preview file={selectedFile}></Preview>
             </Form>
 
 

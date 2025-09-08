@@ -2,7 +2,7 @@ import React, {FormEvent} from "react";
 interface FormProps {
     className?: string;
     children?: React.ReactNode;
-    onSubmit: (event: FormEvent<HTMLFormElement>) => void;
+    onSubmit?: (event: FormEvent<HTMLFormElement>) => void;
 }
 const Form: React.FC<FormProps> = ({
                                        className,
