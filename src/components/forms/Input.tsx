@@ -2,7 +2,7 @@ import {FaRegEye, FaRegEyeSlash} from "react-icons/fa";
 import {useState} from "react";
 
 interface InputProps {
-    type?: "text" | "password" | "select" | "textarea";
+    type?: "text" | "password" | "select" | "textarea" | "file";
     placeholder?: string;
     required?: boolean;
     error?: string;

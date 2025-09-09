@@ -6,7 +6,7 @@ import Button from "@/components/forms/Button";
 import Select from "@/components/forms/Select";
 import {useState} from "react";
 import {useTranslations} from "next-intl";
-import {FilePreview, Preview} from "@/components/ui/preview";
+import {Preview} from "@/components/ui/preview";
 
 interface FormInputProps {
     input1: string;
@@ -116,7 +116,7 @@ const TestPage: React.FC = () => {
             {/*    </Button>*/}
             {/*</Form>*/}
 
-            <Form >
+            <Form>
                 <input type="file" accept=".pdf,.docx" onChange={handleFileSelect} className="" id="file-input" />
                 <Preview file={selectedFile}></Preview>
             </Form>
