@@ -1,5 +1,9 @@
 {
   "welcome": "Welcome to channel!",
   "fullname": "Fullname is required!",
-  "password": "Password is required!"
+  "password": "Password is required!",
+  "drag_file": "Drag files here",
+  "choose_drag": "Choose or drag files here",
+  "accept_file": "Accept",
+  "max_file": "Max file"
 }

@@ -4,6 +4,7 @@ import * as React from "react"
 import {CiFileOn} from "react-icons/ci";
 import {FiUpload} from "react-icons/fi";
 import {IoIosRemove} from "react-icons/io";
+import {useTranslations} from "next-intl";
 
 interface FileInputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "onChange"> {
     onFileChange?: (files: FileList | null) => void
@@ -28,6 +29,8 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
         },
         ref,
     ) => {
+        const t = useTranslations();
+
         const [files, setFiles] = React.useState<File[]>([])
         const [dragActive, setDragActive] = React.useState(false)
         const inputRef = React.useRef<HTMLInputElement>(null)
@@ -98,7 +101,7 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
         return (
             <div className={`w-full ${className}`}>
                 <div
-                    className={`relative border-2 border-dashed rounded-lg p-6 transition-colors
+                    className={`relative border-1 border-dashed border-gray-500 rounded-lg p-6 transition-colors
                         ${dragActive ? "border-primary bg-primary/5" : "border-border"} 
                         ${disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-primary/50"} ` }
                     onDragEnter={handleDrag}
@@ -120,11 +123,11 @@ const FileInput = React.forwardRef<HTMLInputElement, FileInputProps>(
 
                     <div className="flex flex-col items-center justify-center text-center">
                         <FiUpload className="h-10 w-10 text-muted-foreground mb-4" />
-                        <p className="text-sm font-medium mb-1">{dragActive ? "Thả file vào đây" : "Chọn file hoặc kéo thả"}</p>
+                        <p className="text-sm font-medium mb-1">{dragActive ? t('drag_file') : t('choose_drag')}</p>
                         <p className="text-xs text-muted-foreground">
-                            {acceptedTypes.length > 0 && `Chấp nhận: ${acceptedTypes.join(", ")} • `}
+                            {acceptedTypes.length > 0 && `${t('accept_file')}: ${acceptedTypes.join(", ")} • `}
                             Tối đa {formatFileSize(maxSize)}
-                            {maxFiles > 1 && ` • Tối đa ${maxFiles} file`}
+                            {maxFiles > 1 && ` • ${t('max_file')} ${maxFiles} file`}
                         </p>
                     </div>
                 </div>
