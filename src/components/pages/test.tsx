@@ -8,6 +8,7 @@ import {useState} from "react";
 import {useTranslations} from "next-intl";
 import {Preview} from "@/components/ui/preview";
 import {FileInput} from "@/components/forms/FIleInput";
+import {Loading} from "@/components/forms/Loading";
 
 interface FormInputProps {
     input1: string;
@@ -118,16 +119,19 @@ const TestPage: React.FC = () => {
             {/*</Form>*/}
 
             <Form>
-                <FileInput
-                    onFileChange={(files) => console.log("Multiple files:", files)}
-                    maxFiles={5}
-                    maxSize={2 * 1024 * 1024}
-                    className="pb-4"
-                />
-                {/*<input type="file" accept=".pdf,.docx" onChange={handleFileSelect} className="" id="file-input" />*/}
+                {/*<FileInput*/}
+                {/*    onFileChange={(files) => console.log("Multiple files:", files)}*/}
+                {/*    maxFiles={5}*/}
+                {/*    maxSize={2 * 1024 * 1024}*/}
+                {/*    className="pb-4"*/}
+                {/*/>*/}
+                <input type="file" accept=".pdf,.docx" onChange={handleFileSelect} className="" id="file-input" />
                 <Preview file={selectedFile}></Preview>
             </Form>
-
+            {/*<div>*/}
+            {/*    <p className="text-sm font-medium mb-2">Skeleton Loading</p>*/}
+            {/*    <Loading variant="skeleton" size={"lg"} />*/}
+            {/*</div>*/}
 
         </div>
     )
