@@ -7,6 +7,7 @@ import Select from "@/components/forms/Select";
 import {useState} from "react";
 import {useTranslations} from "next-intl";
 import {Preview} from "@/components/ui/preview";
+import {FileInput} from "@/components/forms/FIleInput";
 
 interface FormInputProps {
     input1: string;
@@ -117,7 +118,13 @@ const TestPage: React.FC = () => {
             {/*</Form>*/}
 
             <Form>
-                <input type="file" accept=".pdf,.docx" onChange={handleFileSelect} className="" id="file-input" />
+                <FileInput
+                    onFileChange={(files) => console.log("Multiple files:", files)}
+                    maxFiles={5}
+                    maxSize={2 * 1024 * 1024}
+                    className="pb-4"
+                />
+                {/*<input type="file" accept=".pdf,.docx" onChange={handleFileSelect} className="" id="file-input" />*/}
                 <Preview file={selectedFile}></Preview>
             </Form>
 
